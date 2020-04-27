@@ -66,9 +66,9 @@ namespace Web.Memberships.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            item.Parts = db.Parts.ToList();
-            item.ItemTypes = db.ItemTypes.ToList();
-            item.Sections = db.Sections.ToList();
+            item.Parts = await db.Parts.ToListAsync();
+            item.ItemTypes = await db.ItemTypes.ToListAsync();
+            item.Sections = await db.Sections.ToListAsync();
 
             return View(item);
         }
@@ -85,6 +85,11 @@ namespace Web.Memberships.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+
+            item.Parts = await db.Parts.ToListAsync();
+            item.ItemTypes = await db.ItemTypes.ToListAsync();
+            item.Sections = await db.Sections.ToListAsync();
+
             return View(item);
         }
 
@@ -101,6 +106,11 @@ namespace Web.Memberships.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
+            item.Parts = await db.Parts.ToListAsync();
+            item.ItemTypes = await db.ItemTypes.ToListAsync();
+            item.Sections = await db.Sections.ToListAsync();
+
             return View(item);
         }
 

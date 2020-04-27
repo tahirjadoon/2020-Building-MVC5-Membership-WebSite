@@ -1,9 +1,9 @@
 ﻿@using Web.Memberships.Models;
 @model Web.Memberships.Models.SmallButtonModel
 
-<td style="width:120px;">
-    <div class="btn-group" role="group">
-        @Html.Partial("_SmallButtonPartial",
+<td style="width:140px;">
+    <div class="btn-group siteTableButtons" role="group">
+        @Html.Partial("_SiteSmallButtonPartial",
         new SmallButtonModel
                 {
             Action = "Edit",
@@ -18,8 +18,7 @@
         })
         @if (Model.UserId == null || Model.UserId.Equals(string.Empty))
         {
-            <text>&nbsp;</text>
-            @Html.Partial("_SmallButtonPartial",
+            @Html.Partial("_SiteSmallButtonPartial",
                     new SmallButtonModel
                     {
                         Action = "Details",
@@ -35,8 +34,7 @@
         }
         @if (Model.UserId != null && !Model.UserId.Equals(string.Empty))
         {
-            <text>&nbsp;</text>
-            @Html.Partial("_SmallButtonPartial",
+            @Html.Partial("_SiteSmallButtonPartial",
                     new SmallButtonModel
                     {
                         Action = "Subscriptions",
@@ -50,8 +48,7 @@
                         UserId = Model.UserId
                     })
         }
-        <text>&nbsp;</text>
-        @Html.Partial("_SmallButtonPartial",
+        @Html.Partial("_SiteSmallButtonPartial",
         new SmallButtonModel
         {
             Action = "Delete",

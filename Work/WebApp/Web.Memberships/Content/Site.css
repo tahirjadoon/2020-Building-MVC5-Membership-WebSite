@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.btn-group.siteTableButtons > .btn:not(:first-child) {
+    margin-left: 2px !important;
+}

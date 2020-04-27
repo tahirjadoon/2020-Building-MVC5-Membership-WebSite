@@ -1,0 +1,12 @@
+﻿@model Web.Memberships.Areas.Admin.Models.EditButtonModel
+
+@* just appending the link. If we pass in the controller name to the model
+    then second param would be controller name
+    and third  would be object routeValue as new { a=1,b=2 }
+    see: https://stackoverflow.com/questions/39095632/how-to-append-a-querystring-to-the-url-created-by-url-action-base-on-a-hidden-fi
+*@
+<a type="button" class="btn btn-primary btn-sm"
+   href="@Url.Action("Edit")@Model.Link">
+    <span class="glyphicon glyphicon-pencil"></span>
+    <span>Edit</span>
+</a>

@@ -41,7 +41,15 @@ namespace Web.Memberships.Areas.Admin.Controllers
         // GET: Admin/Item/Create
         public ActionResult Create()
         {
-            return View();
+            //build model
+            var model = new Item
+            {
+                Parts = db.Parts.ToList(),
+                ItemTypes = db.ItemTypes.ToList(),
+                Sections = db.Sections.ToList()
+            };
+            //pass the model into the view so that it renders it
+            return View(model);
         }
 
         // POST: Admin/Item/Create
@@ -57,6 +65,10 @@ namespace Web.Memberships.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
+            item.Parts = db.Parts.ToList();
+            item.ItemTypes = db.ItemTypes.ToList();
+            item.Sections = db.Sections.ToList();
 
             return View(item);
         }

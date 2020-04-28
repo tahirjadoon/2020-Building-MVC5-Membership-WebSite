@@ -176,6 +176,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\SectionController.cs" />
     <Compile Include="Areas\Admin\Models\EditButtonModel.cs" />
+    <Compile Include="Areas\Admin\Models\ProductModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Entities\Subscription.cs" />
     <Compile Include="Entities\SubscriptionProduct.cs" />
     <Compile Include="Entities\UserSubscription.cs" />
+    <Compile Include="Extensions\ConversionExtensions.cs" />
     <Compile Include="Extensions\ICollectionExtensions.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Global.asax.cs">

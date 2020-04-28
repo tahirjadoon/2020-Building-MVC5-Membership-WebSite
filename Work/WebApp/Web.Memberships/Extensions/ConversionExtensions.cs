@@ -15,7 +15,7 @@ namespace Web.Memberships.Extensions
         #region Prduct
         public static async Task<IEnumerable<ProductModel>> Convert(this IEnumerable<Product> products, ApplicationDbContext db)
         {
-            if (products == null || !products.Any())
+            if (products == null || !products.Any() || db == null)
                 return new List<ProductModel>();
 
             var texts = await db.ProductLinkTexts.ToListAsync();
@@ -38,7 +38,7 @@ namespace Web.Memberships.Extensions
 
         public static async Task<ProductModel> Convert(this Product product, ApplicationDbContext db)
         {
-            if (product == null)
+            if (product == null || db == null)
                 return new ProductModel();
 
             var text = await db.ProductLinkTexts.FirstOrDefaultAsync(p => p.Id.Equals(product.ProductLinkTextId));

@@ -174,11 +174,12 @@
     <Compile Include="Areas\Admin\Controllers\ItemTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PartController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductLinkTextController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\SectionController.cs" />
     <Compile Include="Areas\Admin\Controllers\SubscriptionController.cs" />
-    <Compile Include="Areas\Admin\Models\EditButtonModel.cs" />
+    <Compile Include="Areas\Admin\Models\ProductItemModel.cs" />
     <Compile Include="Areas\Admin\Models\ProductModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -202,6 +203,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EditButtonModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SmallButtonModel.cs" />
@@ -236,8 +238,8 @@
     <Content Include="Areas\Admin\Views\Section\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Section\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Section\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_SiteEditButtonDetailPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_SiteEditButtonPartial.cshtml" />
+    <Content Include="Views\Shared\_SiteEditButtonDetailPartial.cshtml" />
+    <Content Include="Views\Shared\_SiteEditButtonPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Part\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Part\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Part\Details.cshtml" />
@@ -273,6 +275,11 @@
     <Content Include="Areas\Admin\Views\Subscription\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Subscription\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Subscription\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductItem\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductItem\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductItem\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductItem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductItem\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

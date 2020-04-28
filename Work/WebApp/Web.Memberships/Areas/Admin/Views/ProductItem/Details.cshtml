@@ -1,0 +1,23 @@
+﻿@model Web.Memberships.Areas.Admin.Models.ProductItemModel
+@using Web.Memberships.Models;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(m => m.ItemTitle)</dt>
+        <dd>@Html.DisplayFor(m => m.ItemTitle)</dd>
+        <dt>@Html.DisplayNameFor(m => m.ProductTitle)</dt>
+        <dd>@Html.DisplayFor(m => m.ProductTitle)</dd>
+    </dl>
+</div>
+<p>
+    @Html.Partial("_SiteEditButtonDetailPartial", new EditButtonModel { ItemId = Model.ItemId, ProductId = Model.ProductId })
+    @Html.Partial("_SiteBackToListButtonPartial")
+</p>

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Web.Memberships.Areas.Admin.Models
+namespace Web.Memberships.Models
 {
     public class EditButtonModel
     {

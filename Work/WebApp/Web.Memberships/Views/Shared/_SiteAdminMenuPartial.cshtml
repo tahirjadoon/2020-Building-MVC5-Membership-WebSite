@@ -1,30 +1,33 @@
-﻿<li class="dropdown" data-admin-menu>
-    <a href="#">
-        Admin
-        <span class="glyphicon glyphicon-chevron-down"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu">
-        <li class="dropdown-header">Minor Entities</li>
-        <li class="divider" />
-        <li><a href="@Url.Action("Index", "Section", new { Area = "Admin" })">&nbsp;&nbsp;Section</a></li>
-        <li><a href="@Url.Action("Index", "Part", new { Area = "Admin" })">&nbsp;&nbsp;Part</a></li>
-        <li><a href="@Url.Action("Index", "ItemType", new { Area = "Admin" })">&nbsp;&nbsp;Item Type</a></li>
-        <li><a href="@Url.Action("Index", "ProductType", new { Area = "Admin" })">&nbsp;&nbsp;Product Type</a></li>
-        <li><a href="@Url.Action("Index", "ProductLinkText", new { Area = "Admin" })">    &nbsp;&nbsp;Product Link Text</a></li>
-        <li class="divider" />
-        <li class="dropdown-header">Major Entities</li>
-        <li class="divider" />
-        <li><a href="@Url.Action("Index", "Item", new { Area = "Admin" })">&nbsp;&nbsp;Item</a></li>
-        <li><a href="@Url.Action("Index", "Product", new { Area = "Admin" })">&nbsp;&nbsp;Product</a></li>
-        <li><a href="@Url.Action("Index", "Subscription", new { Area = "Admin" })">    &nbsp;&nbsp;Subscription</a></li>
-        <li class="divider" />
-        <li class="dropdown-header">Connector Entities</li>
-        <li class="divider" />
-        <li><a href="@Url.Action("Index", "ProductItem", new { Area = "Admin" })">&nbsp;&nbsp;Product Item</a></li>
-        <li><a href="@Url.Action("Index", "SubscriptionProduct", new { Area = "Admin" })">    &nbsp;&nbsp;Subscription Product</a></li>
-        <li class="divider" />
-        <li class="dropdown-header">Users & Subscriptions</li>
-        <li class="divider" />
-        <li><a href="/Account">    &nbsp;&nbsp;Users & Subscriptions</a></li>
-    </ul>
-</li>
+﻿@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <li class="dropdown" data-admin-menu>
+        <a href="#">
+            Admin
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">Minor Entities</li>
+            <li class="divider" />
+            <li><a href="@Url.Action("Index", "Section", new { Area = "Admin" })">&nbsp;&nbsp;Section</a></li>
+            <li><a href="@Url.Action("Index", "Part", new { Area = "Admin" })">&nbsp;&nbsp;Part</a></li>
+            <li><a href="@Url.Action("Index", "ItemType", new { Area = "Admin" })">&nbsp;&nbsp;Item Type</a></li>
+            <li><a href="@Url.Action("Index", "ProductType", new { Area = "Admin" })">&nbsp;&nbsp;Product Type</a></li>
+            <li><a href="@Url.Action("Index", "ProductLinkText", new { Area = "Admin" })">    &nbsp;&nbsp;Product Link Text</a></li>
+            <li class="divider" />
+            <li class="dropdown-header">Major Entities</li>
+            <li class="divider" />
+            <li><a href="@Url.Action("Index", "Item", new { Area = "Admin" })">&nbsp;&nbsp;Item</a></li>
+            <li><a href="@Url.Action("Index", "Product", new { Area = "Admin" })">&nbsp;&nbsp;Product</a></li>
+            <li><a href="@Url.Action("Index", "Subscription", new { Area = "Admin" })">    &nbsp;&nbsp;Subscription</a></li>
+            <li class="divider" />
+            <li class="dropdown-header">Connector Entities</li>
+            <li class="divider" />
+            <li><a href="@Url.Action("Index", "ProductItem", new { Area = "Admin" })">&nbsp;&nbsp;Product Item</a></li>
+            <li><a href="@Url.Action("Index", "SubscriptionProduct", new { Area = "Admin" })">    &nbsp;&nbsp;Subscription Product</a></li>
+            <li class="divider" />
+            <li class="dropdown-header">Users & Subscriptions</li>
+            <li class="divider" />
+            <li><a href="/Account">    &nbsp;&nbsp;Users & Subscriptions</a></li>
+        </ul>
+    </li>
+}

@@ -12,6 +12,7 @@ using Web.Memberships.Models;
 
 namespace Web.Memberships.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ItemTypeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

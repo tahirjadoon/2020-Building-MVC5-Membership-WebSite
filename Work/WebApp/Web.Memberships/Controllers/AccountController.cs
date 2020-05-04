@@ -151,7 +151,21 @@ namespace Web.Memberships.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { 
+                    UserName = model.Email, 
+                    Email = model.Email,
+                    //Custom field ==> Add
+                    FirstName = model.FirstName,
+                    //Cusotm field ==> Add
+                    LastName = model.LastName,
+                    //Custom field ==> Add and make it true 
+                    IsActive = true,
+                    //Custom field ==> assign current date time
+                    RegistrationDate = DateTime.Now,
+                    //this is built in property, since we are not sending the email, make it true for this project purposes
+                    //ApplicationUser is inheriting from IdentityUser. This field is inside the IdentityUser
+                    EmailConfirmed = true 
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

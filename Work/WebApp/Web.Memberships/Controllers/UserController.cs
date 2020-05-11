@@ -2,11 +2,13 @@
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Web.Memberships.Entities;
 using Web.Memberships.Extensions;
 using Web.Memberships.Models;
 
@@ -215,6 +217,99 @@ namespace Web.Memberships.Controllers
             }
             catch { }
             return View(model);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> Subscriptions(string userId)
+        {
+            if (userId == null || userId.Equals(string.Empty))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var model = new UserSubscriptionViewModel();
+            var db = new ApplicationDbContext();
+
+            //get the current user subscriptions
+            model.UserSubscriptions = await
+                (from us in db.UserSubscriptions
+                 join s in db.Subscriptions on us.SubscriptionId equals s.Id
+                 where us.UserId.Equals(userId)
+                 select new UserSubscriptionModel
+                 {
+                     Id = us.SubscriptionId,
+                     StartDate = us.StartDate,
+                     EndDate = us.EndDate,
+                     Description = s.Description,
+                     RegistrationCode = s.RegistrationCode,
+                     Title = s.Title
+                 }).ToListAsync();
+
+            //get the ids for the current user subscriptions
+            var ids = model.UserSubscriptions.Select(us => us.Id);
+
+            //get the subscriptions that have not been subscribed to
+            model.Subscriptions = await db.Subscriptions.Where(s => !ids.Contains(s.Id)).ToListAsync();
+
+            //if no subscriptions available then lock the drop down
+            model.DisableDropDown = model.Subscriptions.Count.Equals(0);
+
+            model.UserId = userId;
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Subscriptions(UserSubscriptionViewModel model)
+        {
+            try
+            {
+                if (model == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                if (ModelState.IsValid)
+                {
+                    var db = new ApplicationDbContext();
+                    db.UserSubscriptions.Add(new UserSubscription
+                    {
+                        UserId = model.UserId,
+                        SubscriptionId = model.SubscriptionId,
+                        StartDate = DateTime.Now,
+                        EndDate = DateTime.MaxValue
+                    });
+
+                    await db.SaveChangesAsync();
+                }
+            }
+            catch { }
+            return RedirectToAction("Subscriptions", "User", new { Area = "", userId = model.UserId });
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> RemoveUserSubscription(string userId, int subscriptionId)
+        {
+            try
+            {
+                if (userId == null || userId.Length.Equals(0) || subscriptionId <= 0)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                if (ModelState.IsValid)
+                {
+                    var db = new ApplicationDbContext();
+                    var subscriptions = db.UserSubscriptions.Where(
+                        us => us.UserId.Equals(userId) &&
+                        us.SubscriptionId.Equals(subscriptionId));
+
+                    db.UserSubscriptions.RemoveRange(subscriptions);
+                    await db.SaveChangesAsync();
+                }
+            }
+            catch { }
+            return RedirectToAction("Subscriptions", "User", new { Area = "", userId = userId });
         }
 
         private void AddErrors(IdentityResult result)

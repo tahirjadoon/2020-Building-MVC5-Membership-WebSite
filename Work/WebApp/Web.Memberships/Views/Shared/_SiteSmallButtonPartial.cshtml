@@ -1,7 +1,7 @@
 ﻿@model Web.Memberships.Models.SmallButtonModel
 
 <a type="button" class="btn @Model.ButtonType btn-sm"
-    href="@Url.Action(Model.Action)@Model.ActionParameters">
+    href="@Url.Action(Model.Action)@Model.ActionParameters" title="@Model.Action">
     <span class="glyphicon glyphicon-@Model.Glyph"></span>
     <span class="sr-only">@Model.Text</span>
 </a>

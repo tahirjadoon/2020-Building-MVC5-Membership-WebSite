@@ -24,6 +24,7 @@ namespace Web.Memberships
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/Navbar.css",
                       "~/Content/Site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/sitejs").Include(

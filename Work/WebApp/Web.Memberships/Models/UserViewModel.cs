@@ -29,5 +29,8 @@ namespace Web.Memberships.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
+
+        [Display(Name = "Subscriptions")]
+        public int SubscriptionsCount { get; set; } = 0; //default to 0
     }
 }

@@ -1,0 +1,21 @@
+﻿@model Web.Memberships.Models.ProductSectionModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Model != null)
+{
+    <div class="pc-headline">
+        <h2>@Model.Title</h2>
+        <a class="btn btn-primary btn-sm btn-info pull-right" href="@Url.Action("Index", "Home", new { Area = "" })">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+            Back
+        </a>
+    </div>
+
+    if (Model.Sections != null && Model.Sections.Any())
+    {
+        @Html.Partial("_ProductSectionPartial", Model.Sections)
+    }
+}

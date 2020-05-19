@@ -1,9 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
+using System.Security.Policy;
 using System.Threading.Tasks;
+using System.Web.Routing;
 using Web.Memberships.Comparers;
 using Web.Memberships.Models;
+using System.Web;
+using System.Web.Mvc;
+using System;
 
 namespace Web.Memberships.Extensions
 {
@@ -47,14 +53,15 @@ namespace Web.Memberships.Extensions
                                 Title = p.Title,
                                 Description = p.Description,
                                 ImageUrl = p.ImageUrl,
-                                Link = "/ProductContent/Index/" + p.Id,
                                 TagText = plt.Title,
                                 ContentTag = pt.Title
                             };
 
                 thumbnails = await (query).ToListAsync();
             }
-            catch { }
+            catch (Exception ex) {
+                var message = ex.ToString();
+            }
             return thumbnails.Distinct(new ThumbnailEqualityComparer()).OrderBy(o => o.Title);
         }
     }

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Web.Memberships.Models.ProductSection>
+
+@if (Model != null && Model.Any())
+{
+    foreach (var s in Model)
+    {
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    @*
+                        SiteCarret.js is used to change the play icon
+                        data attribute is used by javascirpt to to change the title dynamically
+                    *@
+                    <a data-toggle="collapse" class="panel-carret" href="#collapse@{@s.Id}" title="Click to collapse @s.Title" data="@s.Title.Replace("\"","'")">
+                        <span class="pull-left glyphicon glyphicon-play gly-rotate-90"></span>
+                        @s.Title
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse@{@s.Id}" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    @if (s.Items != null && s.Items.Any())
+                    {
+                        foreach (var item in s.Items)
+                        {
+                            @Html.Partial("_ProductItemRowPartial", item)
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+    }
+}

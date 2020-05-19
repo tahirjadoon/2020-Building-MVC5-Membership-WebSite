@@ -1,0 +1,58 @@
+﻿@model Web.Memberships.Models.ContentViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="pc-headline">
+    <h2>@Model.Title</h2>
+    <a class="btn btn-info btn-sm pull-right" href="@Url.Action("Index", "ProductContent", new { Area = "", id = Model.ProductId })">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+        Back
+    </a>
+</div>
+<div>@Model.Description</div>
+
+@if (Model.HTML != null)
+{
+    <div class="article">@Html.Raw(Model.HTML)</div>
+}
+
+@if (Model.VideoURL != null)
+{
+    <div id="video" class="video-margin">&nbsp;</div>
+    <div id="hiddenUrl" hidden="hidden">@Model.VideoURL</div>
+}
+
+@section scripts
+    {
+    <script type="text/javascript">
+        $(function () {
+            //only fire video play back in case it is a video
+            if ($("#hiddenUrl").length) {
+                var video = $("#hiddenUrl").text();
+                //jwVideo(video);
+
+                //https://jwplayer.electroteque.org/youtube
+                jwplayer("video").setup({
+                    playbackRateControls: true,
+                    autostart: false,
+                    playlist: [
+                        { file: video, type: "mp4" },
+                        {
+                            sources: [
+                                { type: "webm", file: "//videos.electroteque.org/bitrate/elephants_dream_600k.webm" },
+                                { type: "mp4", file: "//videos.electroteque.org/bitrate/elephants_dream_600k.mp4" },
+                                { type: "ogg", file: "//videos.electroteque.org/bitrate/elephants_dream_600k.ogv" }
+                            ]
+                        }
+                    ],
+                    youtube: {
+
+                    }
+                });
+
+            }
+        });
+    </script>
+}

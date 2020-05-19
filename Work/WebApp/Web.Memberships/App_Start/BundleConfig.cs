@@ -26,10 +26,14 @@ namespace Web.Memberships
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css",
                       "~/Content/Navbar.css",
-                      "~/Content/Thumbnails.css"));
+                      "~/Content/Thumbnails.css",
+                      "~/Content/ProductContent.css",
+                      "~/Content/Carret.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/sitejs").Include(
-                "~/Scripts/SiteAdminMenu.js"
+                "~/Scripts/SiteAdminMenu.js",
+                "~/Scripts/SiteCarret.js",
+                "~/Scripts/SiteJWPlayer.js"
                 ));
         }
     }

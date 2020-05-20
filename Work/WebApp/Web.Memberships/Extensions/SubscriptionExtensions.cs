@@ -13,7 +13,7 @@ namespace Web.Memberships.Extensions
         {
             try
             {
-                if (subscription == null || code == null || code.Length <= 0)
+                if (subscription == null || string.IsNullOrWhiteSpace(code))
                     return Int32.MinValue;
 
                 var subscriptionId = await (

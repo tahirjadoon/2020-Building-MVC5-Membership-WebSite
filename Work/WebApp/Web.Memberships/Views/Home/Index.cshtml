@@ -27,3 +27,25 @@
         </div>
     }
 </div>
+
+@*Register Code Partial*@
+<div class="row">
+    <div class="col-sm-3 register-code-area">
+        @Html.Partial("_SiteRegisterCodePartial")
+    </div>
+    <div class="col-sm-9">
+
+    </div>
+</div>
+
+@*
+    Set the the url to post the registeration code to
+    The click event is in the SiteRegisterCode.js file
+*@
+@section scripts {
+    <script>
+    $(function (e) {
+        registerCode._registerCodeUrl = '@Url.Action("Register", "RegisterCode", new { Area = "" })';
+    });
+    </script>
+}

@@ -189,6 +189,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductContentController.cs" />
+    <Compile Include="Controllers\RegisterCodeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\ItemType.cs" />
@@ -247,6 +248,7 @@
     <Content Include="Content\Logos\membership-icon-45x184.png" />
     <Content Include="Content\Navbar.css" />
     <Content Include="Content\ProductContent.css" />
+    <Content Include="Content\RegisterCode.css" />
     <Content Include="Content\Thumbnails.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -265,6 +267,7 @@
     <Content Include="Areas\Admin\Views\Section\Index.cshtml" />
     <Content Include="Scripts\SiteCarret.js" />
     <Content Include="Scripts\SiteJWPlayer.js" />
+    <Content Include="Scripts\SiteRegisterCode.js" />
     <Content Include="Views\Shared\_SiteEditButtonDetailPartial.cshtml" />
     <Content Include="Views\Shared\_SiteEditButtonPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Part\Create.cshtml" />
@@ -373,10 +376,12 @@
     <Content Include="Views\ProductContent\_ProductItemRowPartial.cshtml" />
     <Content Include="Views\ProductContent\_ProductSectionPartial.cshtml" />
     <Content Include="Views\ProductContent\Details.cshtml" />
+    <Content Include="Views\Shared\_SiteRegisterCodePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Views\RegisterCode\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

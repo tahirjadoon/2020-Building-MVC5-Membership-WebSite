@@ -28,12 +28,14 @@ namespace Web.Memberships
                       "~/Content/Navbar.css",
                       "~/Content/Thumbnails.css",
                       "~/Content/ProductContent.css",
-                      "~/Content/Carret.css"));
+                      "~/Content/Carret.css",
+                      "~/Content/RegisterCode.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/sitejs").Include(
                 "~/Scripts/SiteAdminMenu.js",
                 "~/Scripts/SiteCarret.js",
-                "~/Scripts/SiteJWPlayer.js"
+                "~/Scripts/SiteJWPlayer.js",
+                "~/Scripts/SiteRegisterCode.js"
                 ));
         }
     }

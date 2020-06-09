@@ -46,12 +46,20 @@ var registerCode = {
             registerCode.displayMessage(false, "Enter a Code");
             return;
         }
+
+        var $button = $(registerCode._buttonSelector);
+        //add spinner
+        siteSpinner.addSpinner($button);
         //post
         $.post(registerCode._registerCodeUrl, { code: code },
             function (data) {
+                //remove spinner
+                siteSpinner.removeSpinner($button);
                 registerCode.displayMessage(true, "The code was successfully added. \n\rPlease reload the page.");
                 $codeInput.val('');
             }).fail(function (xlr, status, error) {
+                //remove spinner
+                siteSpinner.removeSpinner($button);
                 registerCode.displayMessage(false, "Could not register the code");
                 });
 

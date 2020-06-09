@@ -1,4 +1,5 @@
 ﻿@model Web.Memberships.Models.HomeModel
+@using Web.Memberships.Models;
 
 @{
     ViewBag.Title = "Home Page";
@@ -23,7 +24,7 @@
         </div>
         @*right column*@
         <div class="col-lg-3 col-md-4 col-sm-5">
-            <p>Right column</p>
+            @Html.Partial("_SiteRegisterUserPartial", new RegisterUserModel() { ConfirmPassword = "", Password = "", Email = "", FirstName = "", LastName = "" })
         </div>
     }
 </div>
@@ -39,12 +40,24 @@
 </div>
 
 @*
-    Set the the url to post the registeration code to
-    The click event is in the SiteRegisterCode.js file
+    Register User 
+    1. Set the registerUser and site home urls
+    2. The click events are in the SiteRegisterUser.js file
+
+    Register Subscription Via Code
+    1. Set the the url to post the registeration code to
+    2. The click event is in the SiteRegisterCode.js file
 *@
 @section scripts {
     <script>
     $(function (e) {
+        //register user, receives an object
+        registerUser.init({
+            siteHomeUrl: '@Url.Action("Index", "Home", new { Area = "" })',
+            registerUserUrl: '@Url.Action("RegisterUserAsync", "Account", new { Area = "" })'
+        });
+
+        //register subscription
         registerCode._registerCodeUrl = '@Url.Action("Register", "RegisterCode", new { Area = "" })';
     });
     </script>

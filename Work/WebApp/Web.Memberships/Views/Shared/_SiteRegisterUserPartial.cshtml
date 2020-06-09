@@ -1,0 +1,58 @@
+﻿@model Web.Memberships.Models.RegisterUserModel
+
+<div class="register-user-panel">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">Register for a free account</h4>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm("RegisterUserAsync", "Account", new { Area = "" }, FormMethod.Post, new { id = "SiteRegisterUserPartial" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false, "", new { @style = "" })
+
+                @*First Name*@
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon glyphicon glyphicon-user"></span>
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control first-name", @placeholder = "First Name" })
+                </div>
+
+                @*Last Name*@
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon glyphicon glyphicon-user"></span>
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control last-name", @placeholder = "Last Name" })
+                </div>
+
+                @*Email*@
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control email", @placeholder = "Email" })
+                </div>
+
+                @*Password*@
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon glyphicon glyphicon-lock"></span>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control password", @placeholder = "Password" })
+                </div>
+
+                @*Confirm Password*@
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon glyphicon glyphicon-lock"></span>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control confirm-password", @placeholder = "Confirm Password" })
+                </div>
+
+                @*AcceptUSerAgreement*@
+                <div class="register-checkbox">
+                    @Html.CheckBoxFor(m => m.AcceptUserAgreement, new { @data_register_user_agreement_click = "" })
+                    <span>I Accept the <a href="@Url.Action("Legal", "TermsOfUse", new { Area = "" })">Terms of use</a></span>
+                </div>
+
+                @*button || span iside the button is where we will display the animated image*@
+                <button type="button" class="pull-right btn btn-success disabled">
+                    <span class="spinner"></span>
+                        Sign me up!
+                </button>
+            }
+        </div>
+    </div>
+</div>

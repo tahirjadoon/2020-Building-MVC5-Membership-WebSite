@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Web.Memberships.Attributes;
 using Web.Memberships.Models;
 
 namespace Web.Memberships.Controllers
@@ -415,6 +416,75 @@ namespace Web.Memberships.Controllers
         public ActionResult ExternalLoginFailure()
         {
             return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        //[ValidateAjax]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterUserAsync(RegisterUserModel model)
+        {
+            if (!Request.IsAjaxRequest())
+            {
+                RedirectToAction("Index", "Home", new { Area = "" });
+            }
+
+            model.AcceptUserAgreement = true;
+
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    IsActive = true,
+                    RegistrationDate = DateTime.Now,
+                    //this is built in property, since we are not sending the email, make it true for this project purposes
+                    //ApplicationUser is inheriting from IdentityUser. This field is inside the IdentityUser
+                    EmailConfirmed = true
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return PartialView("_SiteRegisterUserPartial", model);
+                }
+                AddUserErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return PartialView("_SiteRegisterUserPartial", model);
+        }
+
+        private void AddUserErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                if ((error.StartsWith("Name") || error.StartsWith("Email")) && error.EndsWith("is already taken."))
+                {
+                    var message = $"{nameof(RegisterUserModel.Email)} is already taken.";
+                    //if the message is in the model state then don't add it
+                    if(!ModelState.Any(x => x.Value.Errors.FirstOrDefault(y => y.ErrorMessage == message) != null))
+                    {
+                        ModelState.AddModelError(nameof(RegisterUserModel.Email), message);
+                    }
+                    
+                }
+                else
+                {
+                    ModelState.AddModelError("", error);
+                }
+                
+            }
         }
 
         protected override void Dispose(bool disposing)

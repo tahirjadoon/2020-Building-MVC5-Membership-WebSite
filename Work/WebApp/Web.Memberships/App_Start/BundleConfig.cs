@@ -26,13 +26,16 @@ namespace Web.Memberships
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css",
                       "~/Content/Navbar.css",
+                      "~/Content/RegisterUser.css",
                       "~/Content/Thumbnails.css",
                       "~/Content/ProductContent.css",
                       "~/Content/Carret.css",
                       "~/Content/RegisterCode.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/sitejs").Include(
+                "~/Scripts/SiteSpinner.js",
                 "~/Scripts/SiteAdminMenu.js",
+                "~/Scripts/SiteRegisterUser.js",
                 "~/Scripts/SiteCarret.js",
                 "~/Scripts/SiteJWPlayer.js",
                 "~/Scripts/SiteRegisterCode.js"

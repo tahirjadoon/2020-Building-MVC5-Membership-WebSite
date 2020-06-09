@@ -183,6 +183,7 @@
     <Compile Include="Areas\Admin\Models\ProductItemModel.cs" />
     <Compile Include="Areas\Admin\Models\ProductModel.cs" />
     <Compile Include="Areas\Admin\Models\SubscriptionProductModel.cs" />
+    <Compile Include="Attributes\ValidateAjaxAttribute.cs" />
     <Compile Include="Comparers\ProductSectionEqualityComparer.cs" />
     <Compile Include="Comparers\ThumbnailEqualityComparer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductContentController.cs" />
     <Compile Include="Controllers\RegisterCodeController.cs" />
+    <Compile Include="Controllers\TermsOfUseController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\ItemType.cs" />
@@ -223,6 +225,7 @@
     <Compile Include="Models\ProductItemRow.cs" />
     <Compile Include="Models\ProductSection.cs" />
     <Compile Include="Models\ProductSectionModel.cs" />
+    <Compile Include="Models\RegisterUserModel.cs" />
     <Compile Include="Models\SmallButtonModel.cs" />
     <Compile Include="Models\ThumbnailAreaModel.cs" />
     <Compile Include="Models\ThumbnailModel.cs" />
@@ -249,6 +252,7 @@
     <Content Include="Content\Navbar.css" />
     <Content Include="Content\ProductContent.css" />
     <Content Include="Content\RegisterCode.css" />
+    <Content Include="Content\RegisterUser.css" />
     <Content Include="Content\Thumbnails.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -268,6 +272,8 @@
     <Content Include="Scripts\SiteCarret.js" />
     <Content Include="Scripts\SiteJWPlayer.js" />
     <Content Include="Scripts\SiteRegisterCode.js" />
+    <Content Include="Scripts\SiteRegisterUser.js" />
+    <Content Include="Scripts\SiteSpinner.js" />
     <Content Include="Views\Shared\_SiteEditButtonDetailPartial.cshtml" />
     <Content Include="Views\Shared\_SiteEditButtonPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Part\Create.cshtml" />
@@ -377,6 +383,8 @@
     <Content Include="Views\ProductContent\_ProductSectionPartial.cshtml" />
     <Content Include="Views\ProductContent\Details.cshtml" />
     <Content Include="Views\Shared\_SiteRegisterCodePartial.cshtml" />
+    <Content Include="Views\Shared\_SiteRegisterUserPartial.cshtml" />
+    <Content Include="Views\TermsOfUse\Legal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

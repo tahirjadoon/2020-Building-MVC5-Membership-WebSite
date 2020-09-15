@@ -1,5 +1,5 @@
 ﻿var registerUser = {
-    //these teo will be filled in at run time from the Home/Index View
+    //these two will be filled in at run time from the Home/Index View
     _urls: {
         _registerUser: '', // /Account/RegisterUserAsync
         _siteHome: '', // /Home/Index

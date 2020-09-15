@@ -205,6 +205,7 @@
     <Compile Include="Entities\SubscriptionProduct.cs" />
     <Compile Include="Entities\UserSubscription.cs" />
     <Compile Include="Extensions\ConversionExtensions.cs" />
+    <Compile Include="Extensions\HtmlExtensions.cs" />
     <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Extensions\ICollectionExtensions.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
@@ -247,6 +248,7 @@
     <Content Include="Content\Images\pdf.png" />
     <Content Include="Content\Images\unit-testing.png" />
     <Content Include="Content\Images\video.png" />
+    <Content Include="Content\Login.css" />
     <Content Include="Content\Logos\membership-icon-30x152.png" />
     <Content Include="Content\Logos\membership-icon-45x184.png" />
     <Content Include="Content\Navbar.css" />
@@ -271,6 +273,7 @@
     <Content Include="Areas\Admin\Views\Section\Index.cshtml" />
     <Content Include="Scripts\SiteCarret.js" />
     <Content Include="Scripts\SiteJWPlayer.js" />
+    <Content Include="Scripts\SiteLogin.js" />
     <Content Include="Scripts\SiteRegisterCode.js" />
     <Content Include="Scripts\SiteRegisterUser.js" />
     <Content Include="Scripts\SiteSpinner.js" />
@@ -385,6 +388,7 @@
     <Content Include="Views\Shared\_SiteRegisterCodePartial.cshtml" />
     <Content Include="Views\Shared\_SiteRegisterUserPartial.cshtml" />
     <Content Include="Views\TermsOfUse\Legal.cshtml" />
+    <Content Include="Views\Shared\_SiteLoginPanelPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

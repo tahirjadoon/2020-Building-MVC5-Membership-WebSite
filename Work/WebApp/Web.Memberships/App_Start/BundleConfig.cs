@@ -30,7 +30,9 @@ namespace Web.Memberships
                       "~/Content/Thumbnails.css",
                       "~/Content/ProductContent.css",
                       "~/Content/Carret.css",
-                      "~/Content/RegisterCode.css"));
+                      "~/Content/RegisterCode.css", 
+                      "~/Content/Login.css"
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/sitejs").Include(
                 "~/Scripts/SiteSpinner.js",
@@ -38,7 +40,8 @@ namespace Web.Memberships
                 "~/Scripts/SiteRegisterUser.js",
                 "~/Scripts/SiteCarret.js",
                 "~/Scripts/SiteJWPlayer.js",
-                "~/Scripts/SiteRegisterCode.js"
+                "~/Scripts/SiteRegisterCode.js",
+                "~/Scripts/SiteLogin.js"
                 ));
         }
     }

@@ -507,6 +507,32 @@ namespace Web.Memberships.Controllers
             base.Dispose(disposing);
         }
 
+        #region Login
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> LoginAsync(LoginViewModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = UserManager.Users.FirstOrDefault(
+                    u => u.Email.Equals(model.Email));
+                if (user != null && user.UserName.Length > 0)
+                {
+                    var result = await SignInManager.PasswordSignInAsync(
+                        user.UserName, model.Password, model.RememberMe,
+                        shouldLockout: false);
+
+                    if (result.Equals(SignInStatus.Success))
+                        return PartialView("_SiteLoginPanelPartial", model);
+                }
+            }
+
+            ModelState.AddModelError("", "Invalid login attempt.");
+            return PartialView("_SiteLoginPanelPartial", model);
+        }
+        #endregion
+
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

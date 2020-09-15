@@ -1,4 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
+@using Web.Memberships.Extensions
+@using Web.Memberships.Models
+
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", new { Area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -7,9 +10,12 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
+            <!--
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            -->
+            @Html.ActionLink("Hello " + User.Identity.GetUserFirstName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li><a class="btn btn-danger" data-logout-button href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
     }
 }
@@ -17,6 +23,15 @@ else
 {
 <ul class="nav navbar-nav navbar-right">
     <!--<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>-->
-    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    <li>
+        @Html.ActionLink("Log in Original", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLinkO" })
+    </li>
+    <li>
+        @Html.BuildLink("", "Account", "Login", "Log in", "user", "", "loginLink", null)
+        @*we are not displayig on mobile, for mobile user will be taken to the original login*@
+        <div class="hidden-xs" login-panel-partial>
+            @Html.Partial("_SiteLoginPanelPartial", new LoginViewModel { Email = "", Password = "", RememberMe = false })
+        </div>
+    </li>
 </ul>
 }
